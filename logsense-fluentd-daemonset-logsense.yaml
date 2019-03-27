@@ -27,7 +27,10 @@ spec:
         image: collectivesense/logsense-fluentd-kubernetes-daemonset:latest
         env:
         - name: LOGSENSE_TOKEN
-          value: "Use your LogSense token here"
+          valueFrom:
+            secretKeyRef:
+              name: logsense-token
+              key: logsense-token
         resources:
           limits:
             memory: 200Mi
